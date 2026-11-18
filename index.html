@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Néctar de Aguaymanto | ONG Islas de Paz Perú</title>
-  <meta name="description" content="Néctar de Aguaymanto endulzado con caña de azúcar, producido por Pio Palomino Zambrano en Llacón, Santa María del Valle.">
-  <meta name="theme-color" content="#2c4f9e">
-  <link rel="icon" href="logo.png">
+  <title>Néctar de Aguaymanto | Agroindustrias Chupachos</title>
+  <meta name="description" content="Néctar de Aguaymanto endulzado con caña de azúcar, elaborado por Luz Eunice Paucar Figueredo. Agroindustrias Chupachos, productos naturales de nuestra tierra.">
+  <meta name="theme-color" content="#1e6b2f">
+  <link rel="icon" type="image/jpeg" href="marca.jpg">
+  <link rel="apple-touch-icon" href="marca.jpg">
   <style>
     :root {
-      --azul: #2c4f9e;
-      --azul-oscuro: #1f3a78;
-      --naranja: #e8841c;
-      --amarillo: #f7b928;
-      --rojo: #d93a2b;
-      --crema: #fff7e6;
-      --texto: #2b2b2b;
-      --gris: #6b6b6b;
+      --verde: #1e6b2f;
+      --verde-oscuro: #14501f;
+      --amarillo: #f6c21c;
+      --naranja: #ee8a0c;
+      --crema: #fffbe8;
+      --texto: #2a2a2a;
+      --gris: #666;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -25,60 +25,50 @@
       color: var(--texto);
       line-height: 1.6;
     }
+    img { max-width: 100%; height: auto; display: block; }
 
     /* ENCABEZADO */
     header {
-      background: linear-gradient(170deg, var(--azul-oscuro), var(--azul));
-      color: #fff;
+      background: linear-gradient(180deg, #fffef6 0%, #fff4c2 100%);
       text-align: center;
-      padding: 26px 20px 8px;
+      padding: 24px 20px 0;
     }
-    .logo {
-      width: 130px;
-      height: 130px;
+    .marca {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 10px;
       border-radius: 50%;
-      display: block;
-      margin: 0 auto 16px;
-      border: 4px solid #fff;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-      background: var(--azul);
-      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     }
-    .ong {
+    .familia {
+      display: inline-block;
+      background: var(--verde);
+      color: #fff;
       font-size: 0.8rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.9;
-      margin-bottom: 10px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
     }
+    .familia strong { color: var(--amarillo); }
     header h1 {
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       line-height: 1.2;
-      margin-bottom: 8px;
+      color: var(--verde-oscuro);
       font-weight: 800;
     }
-    header p.sub {
-      font-size: 1.05rem;
-      color: var(--amarillo);
-      font-weight: 700;
-    }
-    .ola {
+    header h1 span {
       display: block;
-      width: 100%;
-      height: 70px;
-      background: var(--azul);
-      margin-top: -1px;
+      font-size: 1.05rem;
+      color: var(--naranja);
+      font-weight: 700;
+      margin-top: 6px;
     }
-    .ola-borde {
-      background: var(--azul);
-    }
+    .ola { display: block; width: 100%; height: 56px; margin-top: 8px; }
 
     /* CONTENIDO */
-    main {
-      max-width: 640px;
-      margin: -6px auto 0;
-      padding: 0 16px 32px;
-    }
+    main { max-width: 640px; margin: 0 auto; padding: 4px 16px 28px; }
     .card {
       background: #fff;
       border-radius: 16px;
@@ -87,22 +77,21 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       border-left: 6px solid var(--naranja);
     }
-    .card:nth-of-type(even) { border-left-color: var(--azul); }
+    .card:nth-of-type(even) { border-left-color: var(--verde); }
     .card h2 {
       font-size: 1.15rem;
-      color: var(--azul);
+      color: var(--verde);
       margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .card h2 .ico { font-size: 1.3rem; }
-    .card p { font-size: 1rem; }
-    .card ul { padding-left: 0; list-style: none; }
+    .card ul { list-style: none; }
     .card li {
       padding: 8px 0 8px 28px;
       position: relative;
-      border-bottom: 1px solid #f3e8cf;
+      border-bottom: 1px solid #f4ead0;
     }
     .card li:last-child { border-bottom: none; }
     .card li::before {
@@ -113,68 +102,91 @@
       font-weight: bold;
     }
 
-    /* PRODUCTOR */
-    .productor { text-align: center; }
-    .productor h2 { justify-content: center; }
-    .foto {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
+    /* FOTOS DE LA MIEL */
+    .fotos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .fotos img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
       object-fit: cover;
-      border: 5px solid var(--amarillo);
-      display: block;
-      margin: 8px auto 12px;
+      border-radius: 12px;
       background: #eee;
     }
-    .productor .nombre {
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--naranja);
-    }
-    .productor .rol {
+    .pie-foto {
+      text-align: center;
+      font-size: 0.85rem;
       color: var(--gris);
-      font-size: 0.95rem;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* MARCA */
+    .centro { text-align: center; }
+    .centro h2 { justify-content: center; }
+    .marca-card {
+      width: 190px;
+      height: 190px;
+      margin: 6px auto 8px;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+    .nombre-prod { font-weight: 800; color: var(--verde-oscuro); }
+    .rol { color: var(--gris); font-size: 0.95rem; }
+
+    /* CONTACTO */
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn {
+      flex: 1 1 140px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 14px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--verde);
+    }
+    .btn.wa { background: #25a244; }
+    .tarjeta {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 14px;
+      border: 1px solid #eee;
     }
 
     /* PIE */
     footer {
-      background: var(--azul);
+      background: var(--verde);
       color: #fff;
       text-align: center;
-      padding: 26px 16px 34px;
-      border-top: 6px solid var(--naranja);
+      padding: 22px 16px 30px;
+      border-top: 6px solid var(--amarillo);
+      font-size: 0.9rem;
     }
-    footer .logo-pie {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      display: block;
-      margin: 0 auto 10px;
-      object-fit: cover;
-    }
-    footer strong { color: var(--amarillo); font-size: 1rem; }
-    footer p { font-size: 0.88rem; }
+    footer strong { color: var(--amarillo); }
   </style>
 </head>
 <body>
 
   <header>
-    <!-- Guarda el logo con el nombre exacto "logo.png" y súbelo junto a este archivo -->
-    <img class="logo" src="logo.png" alt="Logo de Islas de Paz Perú" onerror="this.style.display='none'">
-    <div class="ong">ONG Islas de Paz Perú</div>
-    <h1>Néctar de Aguaymanto</h1>
-    <p class="sub">Endulzado con caña de azúcar</p>
-  </header>
-
-  <!-- Onda decorativa (azul, naranja y amarillo como en el afiche) -->
-  <div class="ola-borde">
+    <img class="marca" src="marca.jpg" alt="Marca Agroindustrias Chupachos, productos naturales de nuestra tierra" width="600" height="600">
+    <div class="familia">Familia: <strong>Luz Eunice Paucar Figueredo</strong></div>
+    <h1>Néctar de Aguaymanto<span>endulzado con caña de azúcar</span></h1>
     <svg class="ola" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,40 C360,110 760,0 1440,55 L1440,120 L0,120 Z" fill="#e8841c"/>
-      <path d="M0,68 C420,20 900,115 1440,62 L1440,120 L0,120 Z" fill="#f7b928"/>
-      <path d="M0,98 C480,55 960,122 1440,84 L1440,120 L0,120 Z" fill="#fff7e6"/>
+      <path d="M0,50 C360,115 800,5 1440,60 L1440,120 L0,120 Z" fill="#f6c21c"/>
+      <path d="M0,75 C420,25 900,118 1440,70 L1440,120 L0,120 Z" fill="#1e6b2f"/>
+      <path d="M0,100 C480,60 960,124 1440,88 L1440,120 L0,120 Z" fill="#fffbe8"/>
     </svg>
-  </div>
+  </header>
 
   <main>
 
@@ -191,14 +203,23 @@
     <section class="card">
       <h2><span class="ico">📍</span> ¿De dónde vengo?</h2>
       <p>
-        El aguaymanto es una fruta originaria del Perú, cultivado en la localidad de Llacón
-        del distrito de Santa María del Valle.
+        El aguaymanto utilizado para elaborar este producto proviene de la localidad de Llacón,
+        y la miel de abeja de la localidad de Macha distrito de Santa María del Valle, Huánuco.
       </p>
+      <div class="fotos">
+        <img src="miel-1.jpg" alt="Cosechando la miel de abeja en Macha" width="720" height="960" loading="lazy">
+        <img src="miel-2.jpg" alt="Panal de miel de abeja recién cosechado" width="604" height="826" loading="lazy">
+      </div>
+      <p class="pie-foto">Cosechando la miel de abeja</p>
     </section>
 
     <section class="card">
-      <h2><span class="ico">👨‍🌾</span> ¿Quién me produce?</h2>
-      <p>El Productor Agroecológico <strong>Pio Palomino Zambrano</strong>.</p>
+      <h2><span class="ico">👩‍🌾</span> ¿Quién me produce?</h2>
+      <p>
+        Soy elaborado por la emprendedora <strong>Luz Eunice Paucar Figueredo</strong>, quien
+        transforma la producción local de aguaymanto en una bebida de calidad, agregando valor
+        a los productos de la agricultura familiar.
+      </p>
     </section>
 
     <section class="card">
@@ -221,21 +242,28 @@
       </ul>
     </section>
 
-    <section class="card productor">
-      <h2><span class="ico">📷</span> Foto del productor</h2>
-      <!-- Cambia "productor.jpg" por el nombre real de tu foto (sin espacios ni tildes) -->
-      <img class="foto" src="productor.jpg" alt="Foto del productor Pio Palomino Zambrano"
-           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22170%22 height=%22170%22><rect width=%22170%22 height=%22170%22 fill=%22%23eee%22/><text x=%2285%22 y=%2298%22 font-size=%2252%22 text-anchor=%22middle%22>👨‍🌾</text></svg>'">
-      <p class="nombre">Pio Palomino Zambrano</p>
-      <p class="rol">Productor Agroecológico</p>
+    <section class="card centro">
+      <h2><span class="ico">📷</span> Productor y marca</h2>
+      <img class="marca-card" src="marca.jpg" alt="Marca Agroindustrias Chupachos" width="600" height="600" loading="lazy">
+      <p class="nombre-prod">Agroindustrias Chupachos</p>
+      <p class="rol">Productos naturales de nuestra tierra</p>
+    </section>
+
+    <section class="card centro">
+      <h2><span class="ico">📞</span> Contacto</h2>
+      <p>Teléfono: <strong>931 266 103</strong></p>
+      <div class="botones">
+        <a class="btn" href="tel:+51931266103">Llamar</a>
+        <a class="btn wa" href="https://wa.me/51931266103" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <img class="tarjeta" src="tarjeta.jpg" alt="Tarjeta de presentación" width="1000" height="700" loading="lazy">
     </section>
 
   </main>
 
   <footer>
-    <img class="logo-pie" src="logo.png" alt="" onerror="this.style.display='none'">
-    <p><strong>ONG Islas de Paz Perú</strong></p>
-    <p>Apoyando a los productores de nuestra tierra</p>
+    <p><strong>Agroindustrias Chupachos</strong></p>
+    <p>Productos naturales de nuestra tierra</p>
   </footer>
 
 </body>
