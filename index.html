@@ -4,195 +4,1229 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Néctar de Aguaymanto | Agroindustrias Chupachos</title>
-  <meta name="description" content="Néctar de Aguaymanto endulzado con caña de azúcar, elaborado por Luz Eunice Paucar Figueredo. Agroindustrias Chupachos, productos naturales de nuestra tierra.">
-  <meta name="theme-color" content="#1e6b2f">
+  <meta name="description" content="Néctar de aguaymanto endulzado con caña de azúcar, elaborado por Luz Eunice Paucar Figueredo. Agroindustrias Chupachos, productos naturales de nuestra tierra.">
+  <meta name="theme-color" content="#0f5132">
   <link rel="icon" type="image/jpeg" href="marca.jpg">
   <link rel="apple-touch-icon" href="marca.jpg">
   <style>
     :root {
-      --verde: #1e6b2f;
-      --verde-oscuro: #14501f;
-      --amarillo: #f6c21c;
-      --naranja: #ee8a0c;
-      --crema: #fffbe8;
-      --texto: #2a2a2a;
-      --gris: #666;
+      --verde: #0f5132;
+      --verde-claro: #1f8a4c;
+      --lima: #a7d94b;
+      --amarillo: #ffd23f;
+      --naranja: #ff8a3d;
+      --crema: #fffaf0;
+      --blanco: #ffffff;
+      --tinta: #18352a;
+      --gris: #64756d;
+      --sombra: 0 24px 60px rgba(15, 81, 50, 0.14);
+      --radio: 28px;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--crema);
-      color: var(--texto);
-      line-height: 1.6;
-    }
-    img { max-width: 100%; height: auto; display: block; }
 
-    /* ENCABEZADO */
-    header {
-      background: linear-gradient(180deg, #fffef6 0%, #fff4c2 100%);
-      text-align: center;
-      padding: 24px 20px 0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Avenir Next", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--tinta);
+      background: var(--crema);
+      line-height: 1.65;
+      overflow-x: hidden;
     }
-    .marca {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(15, 81, 50, 0.08) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.45;
     }
-    .familia {
-      display: inline-block;
+
+    img { max-width: 100%; height: auto; display: block; }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible {
+      outline: 3px solid var(--naranja);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -80px;
+      z-index: 1000;
       background: var(--verde);
       color: #fff;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 14px;
+      padding: 10px 18px;
       border-radius: 999px;
-      margin-bottom: 14px;
+      transition: top 0.2s ease;
     }
-    .familia strong { color: var(--amarillo); }
-    header h1 {
-      font-size: 1.75rem;
-      line-height: 1.2;
-      color: var(--verde-oscuro);
-      font-weight: 800;
-    }
-    header h1 span {
-      display: block;
-      font-size: 1.05rem;
-      color: var(--naranja);
-      font-weight: 700;
-      margin-top: 6px;
-    }
-    .ola { display: block; width: 100%; height: 56px; margin-top: 8px; }
 
-    /* CONTENIDO */
-    main { max-width: 640px; margin: 0 auto; padding: 4px 16px 28px; }
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      border-left: 6px solid var(--naranja);
+    .skip-link:focus { top: 16px; }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
     }
-    .card:nth-of-type(even) { border-left-color: var(--verde); }
-    .card h2 {
-      font-size: 1.15rem;
-      color: var(--verde);
-      margin-bottom: 8px;
+
+    .site-header.scrolled {
+      background: rgba(255, 250, 240, 0.88);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(15, 81, 50, 0.08);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-    .card h2 .ico { font-size: 1.3rem; }
-    .card ul { list-style: none; }
-    .card li {
-      padding: 8px 0 8px 28px;
-      position: relative;
-      border-bottom: 1px solid #f4ead0;
-    }
-    .card li:last-child { border-bottom: none; }
-    .card li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      color: var(--naranja);
-      font-weight: bold;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    /* FOTOS DE LA MIEL */
-    .fotos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .fotos img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: 12px;
-      background: #eee;
-    }
-    .pie-foto {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--gris);
-      margin-top: 8px;
-      font-style: italic;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--verde);
     }
 
-    /* MARCA */
-    .centro { text-align: center; }
-    .centro h2 { justify-content: center; }
-    .marca-card {
-      width: 190px;
-      height: 190px;
-      margin: 6px auto 8px;
+    .brand img {
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      object-fit: cover;
+      border: 3px solid var(--amarillo);
+      box-shadow: 0 6px 16px rgba(15, 81, 50, 0.18);
     }
-    .nombre-prod { font-weight: 800; color: var(--verde-oscuro); }
-    .rol { color: var(--gris); font-size: 0.95rem; }
 
-    /* CONTACTO */
-    .botones {
+    .brand small {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--naranja);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--verde);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(167, 217, 75, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .nav .nav-cta {
+      background: var(--verde);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(15, 81, 50, 0.22);
+    }
+
+    .nav .nav-cta:hover { background: var(--verde-claro); }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--verde);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(15, 81, 50, 0.22);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 132px 22px 90px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      right: -180px;
+      top: 40px;
+      border-radius: 46% 54% 58% 42% / 42% 44% 56% 58%;
+      background: linear-gradient(135deg, rgba(255, 210, 63, 0.55), rgba(255, 138, 61, 0.22));
+      filter: blur(2px);
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      left: -150px;
+      bottom: -120px;
+      border-radius: 50%;
+      background: rgba(167, 217, 75, 0.25);
+      z-index: -1;
+    }
+
+    .hero-copy { position: relative; z-index: 2; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--verde);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 24px rgba(15, 81, 50, 0.08);
+    }
+
+    .eyebrow .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--naranja);
+      box-shadow: 0 0 0 5px rgba(255, 138, 61, 0.18);
+    }
+
+    .hero h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(2.7rem, 6vw, 5.1rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      color: var(--verde);
+      max-width: 720px;
+    }
+
+    .hero h1 span {
+      display: block;
+      background: linear-gradient(100deg, var(--naranja), #f5b900 55%, var(--verde-claro));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lead {
+      max-width: 590px;
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      color: #42594f;
+      margin-bottom: 14px;
+    }
+
+    .family-line {
+      color: var(--gris);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    .family-line strong { color: var(--verde); }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 2px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(15, 81, 50, 0.2);
+    }
+
+    .btn-primary {
+      background: var(--verde);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(15, 81, 50, 0.24);
+    }
+
+    .btn-primary:hover { background: var(--verde-claro); }
+
+    .btn-whatsapp {
+      background: #25a244;
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(37, 162, 68, 0.24);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--verde);
+      border-color: rgba(15, 81, 50, 0.18);
+    }
+
+    .hero-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 12px;
-    }
-    .btn {
-      flex: 1 1 140px;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 12px 14px;
-      border-radius: 999px;
-      color: #fff;
-      background: var(--verde);
-    }
-    .btn.wa { background: #25a244; }
-    .tarjeta {
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 14px;
-      border: 1px solid #eee;
     }
 
-    /* PIE */
-    footer {
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(15, 81, 50, 0.08);
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #405a4e;
+    }
+
+    .hero-art {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      justify-self: center;
+      z-index: 1;
+    }
+
+    .art-blob {
+      position: absolute;
+      inset: 7% 3% 8%;
+      border-radius: 44% 56% 48% 52% / 55% 42% 58% 45%;
+      background: linear-gradient(150deg, #fff3b0, #ffd978 46%, #ffb85c);
+      box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.35);
+      animation: morph 12s ease-in-out infinite alternate;
+    }
+
+    .hero-svg {
+      position: relative;
+      width: 100%;
+      filter: drop-shadow(0 28px 34px rgba(15, 81, 50, 0.2));
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 18px;
+      box-shadow: 0 16px 32px rgba(15, 81, 50, 0.16);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--verde);
+      animation: floaty 5s ease-in-out infinite;
+    }
+
+    .float-card span {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      background: rgba(167, 217, 75, 0.3);
+    }
+
+    .float-card.one { left: -6px; top: 23%; animation-delay: -1s; }
+    .float-card.two { right: -10px; bottom: 20%; animation-delay: -3s; }
+    .float-card.two span { background: rgba(255, 210, 63, 0.4); }
+
+    .orbit-fruit {
+      position: absolute;
+      z-index: 2;
+      font-size: 2rem;
+      animation: bob 4s ease-in-out infinite;
+    }
+
+    .orbit-fruit.f1 { top: 8%; left: 12%; }
+    .orbit-fruit.f2 { top: 16%; right: 8%; animation-delay: -1.5s; }
+    .orbit-fruit.f3 { bottom: 12%; left: 9%; animation-delay: -2.5s; }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 26px;
+      left: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--verde);
+      opacity: 0.75;
+    }
+
+    .scroll-cue i {
+      display: block;
+      width: 24px;
+      height: 38px;
+      border: 2px solid var(--verde);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .scroll-cue i::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 7px;
+      width: 5px;
+      height: 8px;
+      margin-left: -2.5px;
+      border-radius: 999px;
+      background: var(--verde);
+      animation: scrollDot 1.6s ease-in-out infinite;
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 100px 22px;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 46px;
+    }
+
+    .kicker {
+      display: inline-block;
+      color: var(--naranja);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: var(--verde);
+    }
+
+    .section-subtitle {
+      margin-top: 14px;
+      color: var(--gris);
+      font-size: 1.05rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .story-lead {
+      font-size: 1.14rem;
+      color: #3d5449;
+      margin-bottom: 22px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(15, 81, 50, 0.07);
+      box-shadow: 0 14px 34px rgba(15, 81, 50, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mini-card:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: var(--sombra);
+    }
+
+    .mini-card b {
+      display: block;
+      color: var(--verde);
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .mini-card small { color: var(--gris); }
+
+    .collage {
+      position: relative;
+      min-height: 480px;
+    }
+
+    .collage-main {
+      position: absolute;
+      width: 68%;
+      right: 0;
+      top: 0;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 8px solid #fff;
+      box-shadow: var(--sombra);
+      transform: rotate(3deg);
+    }
+
+    .collage-main img { width: 100%; height: 430px; object-fit: cover; }
+
+    .collage-small {
+      position: absolute;
+      width: 52%;
+      left: 0;
+      bottom: 12px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 8px solid #fff;
+      box-shadow: var(--sombra);
+      transform: rotate(-5deg);
+      cursor: zoom-in;
+    }
+
+    .collage-small img { width: 100%; height: 260px; object-fit: cover; }
+
+    .collage-badge {
+      position: absolute;
+      right: 4%;
+      bottom: 34px;
+      z-index: 2;
+      padding: 16px 20px;
+      border-radius: 20px;
+      background: var(--amarillo);
+      color: var(--verde);
+      font-weight: 900;
+      box-shadow: 0 16px 30px rgba(15, 81, 50, 0.18);
+      transform: rotate(-3deg);
+    }
+
+    .collage-badge small {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .zoomable { cursor: zoom-in; }
+
+    .benefits-wrap {
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 100px 22px;
+    }
+
+    .benefits-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 40px 0;
+      background: linear-gradient(135deg, #0f5132, #176b3c 60%, #238a4b);
+      border-radius: 48px;
+      z-index: -1;
+    }
+
+    .benefits-wrap .section-head { margin-left: auto; margin-right: auto; text-align: center; }
+    .benefits-wrap .section-title { color: #fff; }
+    .benefits-wrap .section-subtitle { color: rgba(255, 255, 255, 0.72); }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .benefit-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      padding: 28px 24px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .benefit-card::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--tone, rgba(167, 217, 75, 0.35));
+      opacity: 0.55;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-10px) rotate(1deg);
+      box-shadow: 0 28px 55px rgba(0, 0, 0, 0.18);
+    }
+
+    .benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 20px;
+      border-radius: 18px;
+      font-size: 1.7rem;
+      background: var(--tone, rgba(167, 217, 75, 0.35));
+    }
+
+    .benefit-card h3 {
+      font-size: 1.12rem;
+      color: var(--verde);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-card p {
+      color: var(--gris);
+      font-size: 0.94rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-shell {
+      display: grid;
+      grid-template-columns: 0.42fr 0.58fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      border: 1px solid rgba(15, 81, 50, 0.08);
+      border-radius: 18px;
+      background: #fff;
+      color: var(--tinta);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .step-btn:hover { transform: translateX(5px); }
+
+    .step-btn.active {
       background: var(--verde);
       color: #fff;
+      box-shadow: 0 16px 32px rgba(15, 81, 50, 0.2);
+    }
+
+    .step-num {
+      display: grid;
+      place-items: center;
+      flex: 0 0 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255, 210, 63, 0.45);
+      color: var(--verde);
+      font-weight: 900;
+      font-size: 0.82rem;
+    }
+
+    .step-btn.active .step-num { background: var(--amarillo); }
+    .step-btn strong { font-size: 1rem; }
+
+    .step-panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      padding: 42px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #fffdf5, #ffefc8);
+      border: 1px solid rgba(255, 138, 61, 0.18);
+      box-shadow: var(--sombra);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .step-panel::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: -100px;
+      border-radius: 50%;
+      background: rgba(255, 210, 63, 0.45);
+    }
+
+    .step-panel-icon {
+      position: relative;
+      font-size: 4.5rem;
+      line-height: 1;
+      margin-bottom: 22px;
+      animation: pop 0.45s ease;
+    }
+
+    .step-panel h3 {
+      position: relative;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--verde);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .step-panel p {
+      position: relative;
+      max-width: 560px;
+      color: #4c6056;
+      font-size: 1.05rem;
+    }
+
+    .step-progress {
+      position: relative;
+      height: 8px;
+      margin-top: 34px;
+      border-radius: 999px;
+      background: rgba(15, 81, 50, 0.1);
+      overflow: hidden;
+    }
+
+    .step-progress i {
+      display: block;
+      width: 20%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--naranja), var(--amarillo));
+      transition: width 0.45s ease;
+    }
+
+    .producer-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .brand-showcase {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+    }
+
+    .brand-showcase::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      border: 2px dashed rgba(15, 81, 50, 0.22);
+      animation: spin 24s linear infinite;
+    }
+
+    .brand-showcase::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(255, 210, 63, 0.35);
+      z-index: -1;
+    }
+
+    .brand-showcase img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 10px solid #fff;
+      box-shadow: 0 28px 50px rgba(15, 81, 50, 0.22);
+    }
+
+    .producer-card {
+      padding: 40px;
+      border-radius: 32px;
+      background: #fff;
+      box-shadow: var(--sombra);
+      border-top: 8px solid var(--amarillo);
+    }
+
+    .producer-card blockquote {
+      font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+      line-height: 1.4;
+      font-weight: 700;
+      color: var(--verde);
+      margin-bottom: 22px;
+    }
+
+    .producer-card p { color: var(--gris); margin-bottom: 18px; }
+
+    .signature {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(15, 81, 50, 0.2);
+      font-weight: 800;
+      color: var(--verde);
+    }
+
+    .signature span {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(167, 217, 75, 0.32);
+      font-size: 1.2rem;
+    }
+
+    .contact-wrap {
+      max-width: 1180px;
+      margin: 30px auto 100px;
+      padding: 0 22px;
+    }
+
+    .contact-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 56px;
+      border-radius: 38px;
+      background: linear-gradient(130deg, #0f5132, #14633b 70%, #1c7d46);
+      color: #fff;
+      box-shadow: 0 30px 70px rgba(15, 81, 50, 0.28);
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 50px solid rgba(255, 255, 255, 0.04);
+      right: -100px;
+      top: -140px;
+    }
+
+    .contact-card .kicker { color: var(--amarillo); }
+    .contact-card h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .contact-card p { color: rgba(255, 255, 255, 0.78); margin-bottom: 26px; }
+
+    .phone {
+      display: block;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--amarillo);
+      margin-bottom: 24px;
+    }
+
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .contact-actions .btn-primary { background: var(--amarillo); color: var(--verde); }
+    .contact-actions .btn-primary:hover { background: #ffe27a; }
+    .contact-actions .btn-outline { background: rgba(255, 255, 255, 0.08); color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+
+    .business-card {
+      position: relative;
+      background: #fff;
+      padding: 12px;
+      border-radius: 24px;
+      transform: rotate(3deg);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22);
+    }
+
+    .business-card img { width: 100%; border-radius: 14px; }
+
+    footer {
+      background: #0a3a25;
+      color: rgba(255, 255, 255, 0.72);
       text-align: center;
-      padding: 22px 16px 30px;
+      padding: 32px 22px 40px;
       border-top: 6px solid var(--amarillo);
       font-size: 0.9rem;
     }
+
     footer strong { color: var(--amarillo); }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(6, 30, 19, 0.88);
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open { display: flex; animation: fade 0.25s ease; }
+
+    .lightbox img {
+      max-width: min(92vw, 760px);
+      max-height: 78vh;
+      border-radius: 20px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    .lightbox p {
+      position: absolute;
+      bottom: 30px;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--verde);
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-16px) rotate(8deg); }
+    }
+
+    @keyframes morph {
+      0% { border-radius: 44% 56% 48% 52% / 55% 42% 58% 45%; }
+      100% { border-radius: 55% 45% 38% 62% / 42% 58% 42% 58%; }
+    }
+
+    @keyframes scrollDot {
+      0% { transform: translateY(0); opacity: 1; }
+      70% { transform: translateY(12px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.5) rotate(-12deg); opacity: 0; }
+      to { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: 1fr; padding-top: 120px; text-align: center; }
+      .hero-copy { display: flex; flex-direction: column; align-items: center; }
+      .hero h1 { margin-left: auto; margin-right: auto; }
+      .hero-art { max-width: 480px; }
+      .story-grid, .producer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .collage { min-height: 430px; max-width: 620px; margin: 0 auto; width: 100%; }
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-shell { grid-template-columns: 1fr; }
+      .step-list { display: grid; grid-template-columns: repeat(5, 1fr); }
+      .step-btn { flex-direction: column; text-align: center; gap: 8px; padding: 14px 8px; }
+      .step-btn:hover { transform: translateY(-4px); }
+      .step-btn strong { font-size: 0.82rem; }
+      .contact-card { grid-template-columns: 1fr; }
+      .business-card { max-width: 420px; margin: 0 auto; }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner { padding: 10px 16px; }
+      .brand small { display: none; }
+      .menu-btn { display: block; }
+      .nav {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 72px;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px;
+        border-radius: 22px;
+        background: rgba(255, 250, 240, 0.98);
+        box-shadow: var(--sombra);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      }
+      .nav.open { opacity: 1; visibility: visible; transform: none; }
+      .nav a { text-align: center; padding: 12px; }
+      .hero { padding: 116px 18px 90px; gap: 26px; }
+      .hero h1 { font-size: clamp(2.5rem, 12vw, 3.6rem); }
+      .hero-lead { font-size: 1rem; }
+      .hero-actions { width: 100%; }
+      .hero-actions .btn { flex: 1 1 auto; padding: 13px 16px; }
+      .float-card { font-size: 0.72rem; padding: 9px 11px; }
+      .float-card span { width: 28px; height: 28px; }
+      .float-card.one { left: -4px; }
+      .float-card.two { right: -4px; }
+      .scroll-cue { display: none; }
+      .section { padding: 76px 18px; }
+      .section-head { margin-bottom: 34px; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .collage { min-height: 360px; }
+      .collage-main img { height: 320px; }
+      .collage-small img { height: 200px; }
+      .collage-badge { padding: 12px 14px; font-size: 0.85rem; }
+      .benefits-wrap { padding: 76px 18px; }
+      .benefits-wrap::before { inset: 20px 0; border-radius: 34px; }
+      .benefit-grid { grid-template-columns: 1fr; }
+      .benefit-card { min-height: auto; }
+      .step-list { display: flex; flex-direction: column; }
+      .step-btn { flex-direction: row; text-align: left; padding: 12px 14px; }
+      .step-btn:hover { transform: translateX(4px); }
+      .step-btn strong { font-size: 0.95rem; }
+      .step-panel { min-height: 350px; padding: 30px 24px; }
+      .step-panel-icon { font-size: 3.4rem; }
+      .brand-showcase { min-height: 330px; }
+      .brand-showcase::before { width: 280px; height: 280px; }
+      .brand-showcase img { width: 210px; height: 210px; }
+      .producer-card { padding: 28px 24px; }
+      .contact-wrap { padding: 0 18px; margin-bottom: 70px; }
+      .contact-card { padding: 36px 24px; border-radius: 28px; }
+      .contact-actions .btn { flex: 1 1 auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
 
-  <header>
-    <img class="marca" src="marca.jpg" alt="Marca Agroindustrias Chupachos, productos naturales de nuestra tierra" width="600" height="600">
-    <div class="familia">Familia: <strong>Luz Eunice Paucar Figueredo</strong></div>
-    <h1>Néctar de Aguaymanto<span>endulzado con caña de azúcar</span></h1>
-    <svg class="ola" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,50 C360,115 800,5 1440,60 L1440,120 L0,120 Z" fill="#f6c21c"/>
-      <path d="M0,75 C420,25 900,118 1440,70 L1440,120 L0,120 Z" fill="#1e6b2f"/>
-      <path d="M0,100 C480,60 960,124 1440,88 L1440,120 L0,120 Z" fill="#fffbe8"/>
-    </svg>
+  <header class="site-header" id="inicio">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Agroindustrias Chupachos, inicio">
+        <img src="marca.jpg" alt="Marca Agroindustrias Chupachos">
+        <span>Agroindustrias Chupachos<small>Productos naturales</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>
+      <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+        <a href="#producto">Producto</a>
+        <a href="#origen">Origen</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto" class="nav-cta">Contáctanos</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Huánuco, Perú · Agricultura familiar</div>
+        <h1 id="titulo-principal">Néctar de <span>aguaymanto</span></h1>
+        <p class="hero-lead">Endulzado con caña de azúcar. Una bebida agridulce, aromática y dorada, nacida de la fruta andina y del trabajo de una familia emprendedora.</p>
+        <p class="family-line">Elaborado por <strong>Luz Eunice Paucar Figueredo</strong> · Agroindustrias Chupachos</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#producto">Descubrir el producto ↓</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/51931266103?text=Hola%2C%20me%20interesa%20el%20n%C3%A9ctar%20de%20aguaymanto" target="_blank" rel="noopener">💬 Pedir por WhatsApp</a>
+        </div>
+        <div class="hero-chips" aria-label="Características del producto">
+          <span class="chip">🍊 Vitamina C</span>
+          <span class="chip">🌿 Origen andino</span>
+          <span class="chip">✨ Sabor agridulce</span>
+        </div>
+      </div>
 
-    <section class="card">
-      <h2><span class="ico">🍹</span> Descripción</h2>
-      <p>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-blob"></div>
+        <span class="orbit-fruit f1">🍊</span>
+        <span class="orbit-fruit f2">🍃</span>
+        <span class="orbit-fruit f3">⭐</span>
+
+        <svg class="hero-svg" viewBox="0 0 520 560" role="img" aria-label="Ilustración de una botella de néctar de aguaymanto rodeada de frutas">
+          <defs>
+            <linearGradient id="jugo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffd83d"/>
+              <stop offset="52%" stop-color="#ffae21"/>
+              <stop offset="100%" stop-color="#f47b13"/>
+            </linearGradient>
+            <linearGradient id="vidrio" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+              <stop offset="38%" stop-color="#ffffff" stop-opacity="0.12"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.42"/>
+            </linearGradient>
+            <linearGradient id="hoja" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#62bb45"/>
+              <stop offset="100%" stop-color="#0f6b35"/>
+            </linearGradient>
+            <radialGradient id="fruta" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#ffe36b"/>
+              <stop offset="70%" stop-color="#ffad1f"/>
+              <stop offset="100%" stop-color="#e8790b"/>
+            </radialGradient>
+            <filter id="sombra" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#0f5132" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+
+          <ellipse cx="260" cy="514" rx="142" ry="22" fill="#0f5132" opacity="0.12"/>
+          <path d="M92 453 C62 394 80 315 128 268 C168 228 168 170 144 120 C184 100 238 104 264 130 C292 102 348 100 386 122 C360 172 364 228 404 270 C452 320 464 400 428 454 C392 506 128 506 92 453 Z" fill="url(#hoja)" opacity="0.22"/>
+
+          <g filter="url(#sombra)">
+            <rect x="226" y="72" width="68" height="64" rx="12" fill="#e8641e"/>
+            <rect x="232" y="62" width="56" height="20" rx="8" fill="#ff9a3c"/>
+            <rect x="218" y="126" width="84" height="28" rx="12" fill="#d9f3c5" opacity="0.9"/>
+            <path d="M206 148 H314 C327 148 337 158 337 171 V224 C337 238 343 250 353 260 C389 296 410 344 410 402 C410 464 360 496 260 496 C160 496 110 464 110 402 C110 344 131 296 167 260 C177 250 183 238 183 224 V171 C183 158 193 148 206 148 Z" fill="#fffdf2" stroke="#e7f0d6" stroke-width="4"/>
+            <path d="M117 350 C132 300 158 269 190 243 V402 C190 453 219 483 260 491 C176 491 117 462 117 402 Z" fill="url(#jugo)"/>
+            <path d="M117 350 C150 322 205 310 260 316 C315 310 370 322 403 350 V402 C403 462 344 491 260 491 C176 491 117 462 117 402 Z" fill="url(#jugo)"/>
+            <path d="M117 350 C158 327 210 319 260 324 C312 319 362 327 403 350" fill="none" stroke="#ffe98a" stroke-width="7" opacity="0.85"/>
+            <path d="M206 148 H314 C327 148 337 158 337 171 V224 C337 238 343 250 353 260 C389 296 410 344 410 402 C410 464 360 496 260 496 C160 496 110 464 110 402 C110 344 131 296 167 260 C177 250 183 238 183 224 V171 C183 158 193 148 206 148 Z" fill="url(#vidrio)"/>
+            <path d="M200 170 C194 220 198 242 176 270 C145 311 133 350 133 397" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
+            <rect x="166" y="342" width="188" height="108" rx="22" fill="#fffdf4" stroke="#0f5132" stroke-width="4"/>
+            <rect x="178" y="354" width="164" height="84" rx="16" fill="#fff3bd"/>
+            <text x="260" y="379" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="800" letter-spacing="2" fill="#ff8a3d">AGROINDUSTRIAS</text>
+            <text x="260" y="404" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="24" font-weight="900" letter-spacing="-1" fill="#0f5132">CHUPACHOS</text>
+            <text x="260" y="425" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#1f8a4c">NÉCTAR DE AGUAYMANTO</text>
+          </g>
+
+          <g transform="translate(84 246) rotate(-18)">
+            <circle cx="0" cy="0" r="43" fill="url(#fruta)"/>
+            <path d="M-18 -30 Q0 -44 18 -30 Q26 -48 10 -52 Q2 -60 -6 -50 Q-24 -52 -18 -30 Z" fill="#0f7a3d"/>
+            <path d="M-2 -48 Q-18 -70 -38 -66 Q-28 -48 -2 -48 Z" fill="url(#hoja)"/>
+          </g>
+          <g transform="translate(432 278) rotate(16)">
+            <circle cx="0" cy="0" r="50" fill="url(#fruta)"/>
+            <path d="M-20 -35 Q0 -50 20 -35 Q30 -56 12 -60 Q2 -70 -8 -58 Q-28 -60 -20 -35 Z" fill="#0f7a3d"/>
+            <path d="M4 -56 Q20 -80 42 -74 Q30 -56 4 -56 Z" fill="url(#hoja)"/>
+          </g>
+          <g transform="translate(102 404) rotate(10)">
+            <circle cx="0" cy="0" r="34" fill="url(#fruta)"/>
+            <path d="M-14 -24 Q0 -36 14 -24 Q22 -40 8 -44 Q0 -52 -6 -42 Q-22 -44 -14 -24 Z" fill="#0f7a3d"/>
+          </g>
+
+          <g fill="#ffd23f">
+            <path d="M64 126 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6 Z"/>
+            <path d="M450 112 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5 Z"/>
+            <circle cx="468" cy="196" r="5"/>
+            <circle cx="58" cy="330" r="5"/>
+          </g>
+        </svg>
+
+        <div class="float-card one"><span>🌱</span> Agricultura familiar</div>
+        <div class="float-card two"><span>🍯</span> Endulzado con caña</div>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true"><i></i> Desliza para explorar</div>
+    </section>
+
+    <section class="section reveal" id="producto" aria-labelledby="titulo-producto">
+      <div class="section-head">
+        <span class="kicker">01 · El producto</span>
+        <h2 class="section-title" id="titulo-producto">Una fruta andina en cada sorbo</h2>
+        <p class="section-subtitle">Tradiciones de nuestra tierra, transformadas en una bebida práctica y deliciosa.</p>
+      </div>
+      <div class="mini-grid">
+        <article class="mini-card">
+          <b>🍊 Physalis peruviana</b>
+          <small>Fruta nativa de los Andes peruanos.</small>
+        </article>
+        <article class="mini-card">
+          <b>🎨 Color dorado</b>
+          <small>Tonos amarillo-anaranjados naturales.</small>
+        </article>
+        <article class="mini-card">
+          <b>💊 Nutrientes</b>
+          <small>Vitamina C, carotenoides, fibra y minerales.</small>
+        </article>
+        <article class="mini-card">
+          <b>🥄 Endulzado al natural</b>
+          <small>Elaborado con caña de azúcar.</small>
+        </article>
+      </div>
+      <p class="story-lead" style="margin-top:26px">
         El néctar de aguaymanto es una bebida elaborada a base de la pulpa del aguaymanto
         (<em>Physalis peruviana</em>), fruta nativa de los Andes peruanos. Se caracteriza por
         su sabor agridulce, aroma agradable y color amarillo-anaranjado. Contiene naturalmente
@@ -200,71 +1234,234 @@
       </p>
     </section>
 
-    <section class="card">
-      <h2><span class="ico">📍</span> ¿De dónde vengo?</h2>
-      <p>
-        El aguaymanto utilizado para elaborar este producto proviene de la localidad de Llacón,
-        y la miel de abeja de la localidad de Macha distrito de Santa María del Valle, Huánuco.
-      </p>
-      <div class="fotos">
-        <img src="miel-1.jpg" alt="Cosechando la miel de abeja en Macha" width="720" height="960" loading="lazy">
-        <img src="miel-2.jpg" alt="Panal de miel de abeja recién cosechado" width="604" height="826" loading="lazy">
+    <section class="section reveal" id="origen" aria-labelledby="titulo-origen">
+      <div class="section-head">
+        <span class="kicker">02 · Nuestra tierra</span>
+        <h2 class="section-title" id="titulo-origen">De Llacón y Macha con cariño</h2>
+        <p class="section-subtitle">El aguaymanto proviene de la localidad de Llacón; la miel de abeja, de Macha, distrito de Santa María del Valle, Huánuco.</p>
       </div>
-      <p class="pie-foto">Cosechando la miel de abeja</p>
-    </section>
-
-    <section class="card">
-      <h2><span class="ico">👩‍🌾</span> ¿Quién me produce?</h2>
-      <p>
-        Soy elaborado por la emprendedora <strong>Luz Eunice Paucar Figueredo</strong>, quien
-        transforma la producción local de aguaymanto en una bebida de calidad, agregando valor
-        a los productos de la agricultura familiar.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2><span class="ico">🌱</span> ¿Cómo me producen?</h2>
-      <p>
-        Primero se cosecha el aguaymanto maduro y se realiza la selección y limpieza de los
-        frutos. Luego se procesa para obtener la pulpa, se formula el néctar y se incorpora
-        caña de azúcar como endulzante. Finalmente, se realiza el envasado y almacenamiento
-        bajo condiciones adecuadas de higiene e inocuidad.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2><span class="ico">⭐</span> ¿Cuáles son mis beneficios?</h2>
-      <ul>
-        <li>Aporto vitamina C y carotenoides, compuestos de interés nutricional y antioxidante.</li>
-        <li>Contribuyo a una alimentación variada y saludable.</li>
-        <li>Permito disfrutar del aguaymanto en una presentación práctica y agradable.</li>
-        <li>Promuevo el consumo de frutas andinas y productos locales, apoyando a los productores y emprendimientos de nuestro departamento.</li>
-      </ul>
-    </section>
-
-    <section class="card centro">
-      <h2><span class="ico">📷</span> Productor y marca</h2>
-      <img class="marca-card" src="marca.jpg" alt="Marca Agroindustrias Chupachos" width="600" height="600" loading="lazy">
-      <p class="nombre-prod">Agroindustrias Chupachos</p>
-      <p class="rol">Productos naturales de nuestra tierra</p>
-    </section>
-
-    <section class="card centro">
-      <h2><span class="ico">📞</span> Contacto</h2>
-      <p>Teléfono: <strong>931 266 103</strong></p>
-      <div class="botones">
-        <a class="btn" href="tel:+51931266103">Llamar</a>
-        <a class="btn wa" href="https://wa.me/51931266103" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="story-grid">
+        <div>
+          <p class="story-lead">Cada fruta refleja el origen de un producto hecho con paciencia, cuidado y orgullo local. Conocemos de dónde viene lo que consumimos y valoramos el trabajo de quienes lo cultivan.</p>
+          <p style="color:var(--gris)">Agroindustrias Chupachos transforma la producción local en una bebida de calidad, agregando valor a la agricultura familiar de nuestro departamento.</p>
+          <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px">
+            <span class="chip">📍 Llacón · Aguaymanto</span>
+            <span class="chip">📍 Macha · Miel de abeja</span>
+          </div>
+        </div>
+        <div class="collage">
+          <div class="collage-main">
+            <img class="zoomable" src="miel-1.jpg" alt="Cosechando la miel de abeja en Macha" width="720" height="960" loading="lazy" data-caption="Cosechando la miel de abeja en Macha">
+          </div>
+          <div class="collage-small">
+            <img class="zoomable" src="miel-2.jpg" alt="Panal de miel de abeja recién cosechado" width="604" height="826" loading="lazy" data-caption="Panal de miel de abeja recién cosechado">
+          </div>
+          <div class="collage-badge"><small>Momentos reales</small> De nuestra tierra 🌾</div>
+        </div>
       </div>
-      <img class="tarjeta" src="tarjeta.jpg" alt="Tarjeta de presentación" width="1000" height="700" loading="lazy">
     </section>
 
+    <section class="benefits-wrap reveal" id="beneficios" aria-labelledby="titulo-beneficios">
+      <div class="section-head">
+        <span class="kicker">03 · Beneficios</span>
+        <h2 class="section-title" id="titulo-beneficios">Pequeño sorbo, grandes razones</h2>
+        <p class="section-subtitle">Lo bueno de disfrutar aguaymanto en una presentación práctica y agradable.</p>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit-card" style="--tone:rgba(255,210,63,0.55)">
+          <div class="benefit-icon">🍋</div>
+          <h3>Vitamina C y carotenoides</h3>
+          <p>Compuestos de interés nutricional y antioxidante presentes de forma natural en la fruta.</p>
+        </article>
+        <article class="benefit-card" style="--tone:rgba(167,217,75,0.42)">
+          <div class="benefit-icon">🥗</div>
+          <h3>Alimentación variada</h3>
+          <p>Contribuye a una alimentación variada y saludable en cualquier momento del día.</p>
+        </article>
+        <article class="benefit-card" style="--tone:rgba(255,138,61,0.32)">
+          <div class="benefit-icon">🥤</div>
+          <h3>Práctico y agradable</h3>
+          <p>Permite disfrutar del aguaymanto en una presentación lista para compartir.</p>
+        </article>
+        <article class="benefit-card" style="--tone:rgba(120,190,255,0.35)">
+          <div class="benefit-icon">🤝</div>
+          <h3>Apoyo local</h3>
+          <p>Promueve el consumo de frutas andinas y productos locales de nuestro departamento.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="proceso" aria-labelledby="titulo-proceso">
+      <div class="section-head">
+        <span class="kicker">04 · Cómo se elabora</span>
+        <h2 class="section-title" id="titulo-proceso">Del fruto a la botella</h2>
+        <p class="section-subtitle">Toca cada paso para conocer el proceso de elaboración.</p>
+      </div>
+      <div class="process-shell">
+        <div class="step-list" role="tablist" aria-label="Pasos de elaboración">
+          <button class="step-btn active" type="button" role="tab" aria-selected="true" data-icon="🍊" data-title="Cosecha y selección" data-text="Primero se cosecha el aguaymanto maduro y se realiza la selección y limpieza de los frutos.">
+            <span class="step-num">01</span><strong>Cosecha y selección</strong>
+          </button>
+          <button class="step-btn" type="button" role="tab" aria-selected="false" data-icon="🥄" data-title="Extracción de pulpa" data-text="Luego se procesa el fruto para obtener la pulpa que dará cuerpo y sabor al néctar.">
+            <span class="step-num">02</span><strong>Extracción de pulpa</strong>
+          </button>
+          <button class="step-btn" type="button" role="tab" aria-selected="false" data-icon="⚗️" data-title="Formulación" data-text="Se formula el néctar y se incorpora caña de azúcar como endulzante, logrando su característico equilibrio agridulce.">
+            <span class="step-num">03</span><strong>Formulación</strong>
+          </button>
+          <button class="step-btn" type="button" role="tab" aria-selected="false" data-icon="🍾" data-title="Envasado" data-text="El producto se envasa cuidadosamente para conservar su frescura, aroma y calidad.">
+            <span class="step-num">04</span><strong>Envasado</strong>
+          </button>
+          <button class="step-btn" type="button" role="tab" aria-selected="false" data-icon="🛡️" data-title="Almacenamiento" data-text="Finalmente, se realiza el almacenamiento bajo condiciones adecuadas de higiene e inocuidad.">
+            <span class="step-num">05</span><strong>Almacenamiento</strong>
+          </button>
+        </div>
+        <div class="step-panel" id="step-panel" role="tabpanel" aria-live="polite">
+          <div class="step-panel-icon" id="step-icon">🍊</div>
+          <h3 id="step-title">Cosecha y selección</h3>
+          <p id="step-text">Primero se cosecha el aguaymanto maduro y se realiza la selección y limpieza de los frutos.</p>
+          <div class="step-progress" aria-hidden="true"><i id="step-bar"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="titulo-productor">
+      <div class="section-head">
+        <span class="kicker">05 · Quién lo hace</span>
+        <h2 class="section-title" id="titulo-productor">El corazón detrás del néctar</h2>
+      </div>
+      <div class="producer-grid">
+        <div class="brand-showcase">
+          <img src="marca.jpg" alt="Marca Agroindustrias Chupachos" width="600" height="600" loading="lazy">
+        </div>
+        <div class="producer-card">
+          <blockquote>“Transformamos la producción local de aguaymanto en una bebida de calidad.”</blockquote>
+          <p>Soy elaborado por la emprendedora <strong>Luz Eunice Paucar Figueredo</strong>, quien transforma la producción local de aguaymanto en una bebida de calidad, agregando valor a los productos de la agricultura familiar.</p>
+          <p><strong>Agroindustrias Chupachos</strong><br>Productos naturales de nuestra tierra</p>
+          <div class="signature"><span>👩‍🌾</span> Luz Eunice Paucar Figueredo</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-wrap reveal" id="contacto" aria-labelledby="titulo-contacto">
+      <div class="contact-card">
+        <div>
+          <span class="kicker">06 · Hablemos</span>
+          <h2 id="titulo-contacto">¿Listo para probar un pedacito de los Andes?</h2>
+          <p>Escríbenos para consultar disponibilidad, hacer tu pedido o conocer más sobre nuestros productos naturales.</p>
+          <a class="phone" href="tel:+51931266103">📞 931 266 103</a>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="tel:+51931266103">📞 Llamar ahora</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/51931266103?text=Hola%2C%20me%20interesa%20el%20n%C3%A9ctar%20de%20aguaymanto" target="_blank" rel="noopener">💬 WhatsApp</a>
+          </div>
+        </div>
+        <div class="business-card">
+          <img class="zoomable" src="tarjeta.jpg" alt="Tarjeta de presentación de Agroindustrias Chupachos" width="1000" height="700" loading="lazy" data-caption="Agroindustrias Chupachos · Productos naturales de nuestra tierra">
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p><strong>Agroindustrias Chupachos</strong></p>
-    <p>Productos naturales de nuestra tierra</p>
+    <p>Productos naturales de nuestra tierra · Huánuco, Perú</p>
   </footer>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Cerrar imagen">×</button>
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.nav');
+    const navLinks = document.querySelectorAll('.nav a');
+
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '×' : '☰';
+    });
+
+    navLinks.forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    const stepButtons = document.querySelectorAll('.step-btn');
+    const stepIcon = document.getElementById('step-icon');
+    const stepTitle = document.getElementById('step-title');
+    const stepText = document.getElementById('step-text');
+    const stepBar = document.getElementById('step-bar');
+
+    stepButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        stepButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        stepIcon.textContent = button.dataset.icon;
+        stepTitle.textContent = button.dataset.title;
+        stepText.textContent = button.dataset.text;
+        stepBar.style.width = ((index + 1) / stepButtons.length * 100) + '%';
+        stepIcon.style.animation = 'none';
+        void stepIcon.offsetWidth;
+        stepIcon.style.animation = 'pop 0.45s ease';
+      });
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = img.dataset.caption || img.alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        lightboxClose.focus();
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
