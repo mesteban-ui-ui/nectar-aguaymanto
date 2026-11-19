@@ -693,7 +693,7 @@
       position: relative;
       overflow: hidden;
       min-height: 420px;
-      padding: 42px;
+      padding: 42px 110px 42px 42px;
       border-radius: 34px;
       background: linear-gradient(145deg, #fffdf5, #ffefc8);
       border: 1px solid rgba(255, 138, 61, 0.18);
@@ -754,6 +754,51 @@
       border-radius: 999px;
       background: linear-gradient(90deg, var(--naranja), var(--amarillo));
       transition: width 0.45s ease;
+    }
+
+    .step-next {
+      position: absolute;
+      right: 26px;
+      top: 50%;
+      z-index: 3;
+      width: 58px;
+      height: 58px;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg, #ff9a3c, #f26a19);
+      box-shadow: 0 0 0 7px rgba(255, 138, 61, 0.12), 0 16px 28px rgba(242, 106, 25, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+
+    .step-next svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+
+    .step-next:hover:not(:disabled) {
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 0 0 10px rgba(255, 138, 61, 0.16), 0 20px 34px rgba(242, 106, 25, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .step-next:hover:not(:disabled) svg { transform: translateX(3px); }
+
+    .step-next:active:not(:disabled) { transform: translateY(-50%) scale(0.96); }
+
+    .step-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: 0 0 0 7px rgba(15, 81, 50, 0.06), 0 8px 16px rgba(15, 81, 50, 0.12);
     }
 
     .producer-grid {
@@ -1060,8 +1105,10 @@
       .step-btn { flex-direction: row; text-align: left; padding: 12px 14px; }
       .step-btn:hover { transform: translateX(4px); }
       .step-btn strong { font-size: 0.95rem; }
-      .step-panel { min-height: 350px; padding: 30px 24px; }
+      .step-panel { min-height: 350px; padding: 30px 78px 30px 24px; }
       .step-panel-icon { font-size: 3.4rem; }
+      .step-next { right: 14px; width: 48px; height: 48px; }
+      .step-next svg { width: 20px; height: 20px; }
       .brand-showcase { min-height: 330px; }
       .brand-showcase::before { width: 280px; height: 280px; }
       .brand-showcase img { width: 210px; height: 210px; }
@@ -1320,6 +1367,9 @@
           <h3 id="step-title">Cosecha y selección</h3>
           <p id="step-text">Primero se cosecha el aguaymanto maduro y se realiza la selección y limpieza de los frutos.</p>
           <div class="step-progress" aria-hidden="true"><i id="step-bar"></i></div>
+          <button class="step-next" id="step-next" type="button" aria-label="Siguiente paso" title="Siguiente paso">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -1414,24 +1464,41 @@
     const stepTitle = document.getElementById('step-title');
     const stepText = document.getElementById('step-text');
     const stepBar = document.getElementById('step-bar');
+    const stepNext = document.getElementById('step-next');
+    let activeStep = 0;
+
+    function activateStep(index) {
+      const button = stepButtons[index];
+      stepButtons.forEach((btn, i) => {
+        const active = i === index;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', String(active));
+      });
+      stepIcon.textContent = button.dataset.icon;
+      stepTitle.textContent = button.dataset.title;
+      stepText.textContent = button.dataset.text;
+      stepBar.style.width = ((index + 1) / stepButtons.length * 100) + '%';
+      stepIcon.style.animation = 'none';
+      void stepIcon.offsetWidth;
+      stepIcon.style.animation = 'pop 0.45s ease';
+      stepNext.disabled = index === stepButtons.length - 1;
+    }
 
     stepButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
-        stepButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
-        });
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
-        stepIcon.textContent = button.dataset.icon;
-        stepTitle.textContent = button.dataset.title;
-        stepText.textContent = button.dataset.text;
-        stepBar.style.width = ((index + 1) / stepButtons.length * 100) + '%';
-        stepIcon.style.animation = 'none';
-        void stepIcon.offsetWidth;
-        stepIcon.style.animation = 'pop 0.45s ease';
+        activeStep = index;
+        activateStep(index);
       });
     });
+
+    stepNext.addEventListener('click', () => {
+      if (activeStep < stepButtons.length - 1) {
+        activeStep += 1;
+        activateStep(activeStep);
+      }
+    });
+
+    activateStep(0);
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
